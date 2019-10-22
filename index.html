@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+</head>
+
+ 
+<script>
+ 
+ let playerScore = 0;
+ let computerScore = 0;
+ 
+function computerPlay() {
+const computerSelection = ['rock','paper','scissors'];
+return computerSelection[Math.floor(Math.random() * 3)];
+ 
+}
+ 
+function playerPlay() {
+let choice = prompt('Please enter a move:').toLowerCase();
+
+while (choice !== 'rock' && choice !=='paper' && choice !=='scissors' || choice===null) {
+  alert("You must enter rock, paper or scissors!");
+  choice = prompt('Please enter a move:').toLowerCase();
+}
+
+return choice;
+};
+
+ 
+function playRound(playerSelection,computerSelection) {
+  playerSelection=playerPlay();
+  computerSelection=computerPlay();
+
+
+if (playerSelection == 'rock' && computerSelection == 'paper') {
+  alert ("You lose, paper covers rock!");
+computerScore++;
+} else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+alert("You win, rock crushes scissors!");
+playerScore++;
+} else if (playerSelection == 'paper' && computerSelection == 'rock') {
+alert("You win, paper covers rock!");
+playerScore++;
+} else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+ralert("You lose, scissors cuts paper!");
+computerScore++;
+} else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+alert("You win, scissors cuts paper!");
+playerScore++;
+} else if (playerSelection =='scissors' && computerSelection == 'rock') {
+alert("You lose, rock crushes scissors!");
+computerScore++;
+} else {
+alert("It's a tie!!");
+computerScore++;
+playerScore++;
+}
+};
+ 
+ function game() {
+   while ((playerScore<5) && (computerScore<5)) {
+     playRound();
+     console.log('You have ' +playerScore+ ' points.');
+     console.log('The computer has ' +computerScore+ ' points.');
+   }
+   if (playerScore == 5 && computerScore == 5) {
+     alert("It's a tie!");
+   } else if (playerScore == 5) {
+     alert("You win!!!");
+   } else if (computerScore == 5) {
+     alert("You lost! Try again...");
+   }
+ }
+
+ game();
+ 
+ 
+</script>
+ 
+ 
+</html>
